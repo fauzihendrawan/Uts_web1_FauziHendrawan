@@ -36,8 +36,8 @@ $harga_barang = [3000, 2500, 5000, 6000, 4000];
             text-align: center;
         }
         .container2 {
-            background-color: #007BFF;
-            color: white;
+            background-color: #f4f4f4;
+            color: black;
             padding: 15px;
             border-radius: 5px;
             text-align: center;
@@ -49,8 +49,8 @@ $harga_barang = [3000, 2500, 5000, 6000, 4000];
             display: inline-block;
             margin-top: 10px;
             padding: 10px 15px;
-            background-color: #0056b3;
-            color: white;
+            background-color: #f4f4f4;
+            color: black;
             text-decoration: none;
             border-radius: 4px;
         }
@@ -71,7 +71,7 @@ $harga_barang = [3000, 2500, 5000, 6000, 4000];
             text-align: center;
         }
         th {
-            background-color: #007BFF;
+            background-color: #FFFFFFFF;
             color: white;
         }
     </style>
@@ -89,7 +89,9 @@ $harga_barang = [3000, 2500, 5000, 6000, 4000];
         </div>
     </header>
 
-    <h2>Daftar Barang</h2>
+   <h2 style="text-align: center;">Daftar Pembelian</h2>
+<p style="text-align: center;">Daftar pembelian dibuat secara acak tiap kali halaman dimuat</p>
+
     <table>
         <tr>
             <th>Kode Barang</th>
@@ -97,13 +99,20 @@ $harga_barang = [3000, 2500, 5000, 6000, 4000];
             <th>Harga (Rp)</th>
         </tr>
         <?php
-        for ($i = 0; $i < count($kode_barang); $i++) {
-            echo "<tr>";
-            echo "<td>{$kode_barang[$i]}</td>";
-            echo "<td>{$nama_barang[$i]}</td>";
-            echo "<td>" . number_format($harga_barang[$i], 0, ',', '.') . "</td>";
-            echo "</tr>";
-        }
+        for ($i=0; $i < rand(1, $jumlah); $i++) {
+                        $beli = rand(1, 10);
+                        $id_barang = rand(0, $jumlah);
+                        $total = $harga_barang[$i] * $beli;
+                        $grandtotal += $total;
+
+                        echo "<tr>";
+                        echo "<td>" . $kode_barang[$id_barang] . "</td>";
+                        echo "<td>" . $nama_barang[$id_barang] . "</td>";
+                        echo "<td style='text-align:right;'>" . number_format($harga_barang[$id_barang], 0, ',', '.') . "</td>";
+                        echo "<td style='text-align:center;'>" . $beli . "</td>";
+                        echo "<td style='text-align:right;'>" . number_format($total, 0, ',', '.') . "</td>";
+                        echo "</tr>";
+                    }
         ?>
     </table>
 </body>
