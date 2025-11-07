@@ -2,10 +2,10 @@
 session_start();
 
 // Jika sudah login, langsung ke dashboard
-if (isset($_SESSION['username'])) {
-    header("Location: dashboard.php");
-    exit();
-}
+// if (isset($_SESSION['username'])) {
+//     header("Location: dashboard.php");
+//     exit();
+// }
 
 // ✅ Proses Login (diletakkan sebelum HTML)
 if (isset($_POST['login'])) {
